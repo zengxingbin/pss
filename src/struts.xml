@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+
+	<package name="default" namespace="/" extends="struts-default">
+
+		<!-- <global-results> -->
+		<!-- <result name="error">/error.jsp</result> -->
+		<!-- </global-results> -->
+		<!-- 没有配置class类,是由<default-class-ref class="com.opensymphony.xwork2.ActionSupport" 
+			/> -->
+		<!-- 后台主页 -->
+		<action name="main">
+			<result>/WEB-INF/pages/main.jsp</result>
+		</action>
+		<!-- 后台右边 -->
+		<action name="right">
+			<result>/WEB-INF/pages/right.jsp</result>
+		</action>
+
+
+		<action name="employee_*" class="employeeAction" method="{1}">
+			<result>/WEB-INF/pages/employee.jsp</result>
+			<result name="input">/WEB-INF/pages/employee-input.jsp</result>
+			<result name="reload" type="redirectAction">employee</result>
+		</action>
+
+		<!-- <action name="index"> -->
+		<!-- <result type="redirectAction"> -->
+		<!-- <param name="actionName">HelloWorld</param> -->
+		<!-- <param name="namespace">/example</param> -->
+		<!-- </result> -->
+		<!-- </action> -->
+	</package>
+</struts>
